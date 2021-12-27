@@ -39,10 +39,11 @@ router.post('/categoria1/:respuestaCorrecta', async(req, res)=>{
     respuestaCorrecta = respuestaCorrecta.respuestaCorrecta;
     
     if(respuesta == respuestaCorrecta){
+        req.flash('success', 'Correcto tienes +100 puntos');
         res.render('preguntas/categoria2');
     }else{
         req.flash('message', 'Incorrecto, pierdes todos los puntos');
-        res.redirect('/');
+        res.redirect('preguntas/categoria1');
     }
 });
 

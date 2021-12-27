@@ -41,6 +41,7 @@ router.post('/categoria1/:respuestaCorrecta', async(req, res)=>{
     if(respuesta == respuestaCorrecta){
         req.flash('success', 'Correcto tienes +100 puntos');
         res.redirect('/preguntas/categoria2');
+        
     }else{
         req.flash('message', 'Incorrecto, pierdes todos los puntos');
         res.redirect('/preguntas/categoria1');
@@ -216,14 +217,13 @@ router.get('/categoria5', async (req, res) => {
     res.render('preguntas/categoria5', { preguntaC5, respuestaCorrecta, res1, res2, res3 });
 });
 
-router.post('/categoria4/:respuestaCorrecta', async(req, res)=>{
+router.post('/categoria5/:respuestaCorrecta', async(req, res)=>{
     var respuesta = req.body;
     var respuestaCorrecta = req.params;
     respuesta = respuesta.grupo1;
     respuestaCorrecta = respuestaCorrecta.respuestaCorrecta;
     
     if(respuesta == respuestaCorrecta){
-        req.flash('success', 'Correcto tienes +100 puntos');
         res.redirect('/preguntas/ganaste');
     }else{
         req.flash('message', 'Incorrecto, pierdes todos los puntos');
